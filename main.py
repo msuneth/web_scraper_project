@@ -7,7 +7,10 @@ web_page = response.text
 
 soup = BeautifulSoup(web_page,'html.parser')
 print(soup.title)
-
+article_span_tag = soup.find_all('span', class_='titleline')
+for spann in article_span_tag:
+    print(spann.getText())
+#print(article_text)
 # with open("website.html",encoding="utf-8") as file:
 #     content = file.read()
 #
