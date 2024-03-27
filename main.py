@@ -11,6 +11,8 @@ article_span_tag = soup.find_all('span', class_='titleline')
 for article in article_span_tag:
     print(article.getText())
     print(article.find('a').get('href'))
+article_upvote = soup.find(name='span',class_='score').getText()
+print(article_upvote)
 #print(article_text)
 # with open("website.html",encoding="utf-8") as file:
 #     content = file.read()
