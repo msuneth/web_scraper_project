@@ -8,9 +8,12 @@ web_page = response.text
 soup = BeautifulSoup(web_page,'html.parser')
 print(soup.title)
 article_span_tag = soup.find_all('span', class_='titleline')
-for article in article_span_tag:
-    print(article.getText())
-    print(article.find('a').get('href'))
+article_span_tag = soup.find('span', class_='titleline')
+print(article_span_tag.getText())
+print(article_span_tag.find('a').get('href'))
+# for article in article_span_tag:
+#     print(article.getText())
+#     print(article.find('a').get('href'))
 article_upvote = soup.find(name='span',class_='score').getText()
 print(article_upvote)
 #print(article_text)
