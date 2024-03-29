@@ -7,15 +7,19 @@ web_page = response.text
 
 soup = BeautifulSoup(web_page,'html.parser')
 print(soup.title)
-article_span_tag = soup.find_all('span', class_='titleline')
-article_span_tag = soup.find('span', class_='titleline')
-print(article_span_tag.getText())
-print(article_span_tag.find('a').get('href'))
-# for article in article_span_tag:
-#     print(article.getText())
-#     print(article.find('a').get('href'))
-article_upvote = soup.find(name='span',class_='score').getText()
-print(article_upvote)
+#article_span_tag = soup.find_all('span', class_='titleline')
+articles = soup.find_all('span', class_='titleline')
+article_texts = []
+article_links = []
+# print(article_span_tag.getText())
+# print(article_span_tag.find('a').get('href'))
+for article in articles:
+    article_texts.append(article.getText())
+    article_links.append(article.find('a').get('href'))
+article_upvotes = [vote.getText() for vote in soup.find_all(name='span',class_='score')]
+print(article_texts)
+print(article_links)
+print(article_upvotes)
 #print(article_text)
 # with open("website.html",encoding="utf-8") as file:
 #     content = file.read()
