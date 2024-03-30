@@ -16,10 +16,18 @@ article_links = []
 for article in articles:
     article_texts.append(article.getText())
     article_links.append(article.find('a').get('href'))
-article_upvotes = [vote.getText() for vote in soup.find_all(name='span',class_='score')]
-print(article_texts)
-print(article_links)
-print(article_upvotes)
+article_upvotes = [int(vote.getText().split()[0]) for vote in soup.find_all(name='span',class_='score')]
+max_vote = max(article_upvotes)
+# print(article_texts)
+# print(article_links)
+# # print(article_upvotes)
+# print(max_vote)
+max_vote_index = article_upvotes.index(max_vote)
+# print(max_vote_index)
+print(article_texts[max_vote_index])
+print(article_links[max_vote_index])
+print(max_vote)
+
 #print(article_text)
 # with open("website.html",encoding="utf-8") as file:
 #     content = file.read()
